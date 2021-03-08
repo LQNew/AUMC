@@ -37,3 +37,8 @@ CUDA_VISIBLE_DEVICES=0 python render_bootstrapped.py \
     --seed 2  
 # env_name: Ant-v2; load policy: policy trained with TD3_aumc with seed equaling 2
 ```
+
+### Performance on MuJoCo
+Including `Ant-v2`, `HalfCheetah-v2`, `Hopper-v2`, `Humanoid-v2`, `Swimmer-v2`, `Walker2d-v2`.
+<img src="learning_curves/AUMC_results.png" width="1000" align="middle"/>
+<br>

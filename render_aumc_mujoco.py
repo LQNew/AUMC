@@ -70,6 +70,8 @@ if __name__ == "__main__":
 
 	if args.load_model != "":
 		policy_file = file_name if args.load_model == "default" else args.load_model
+		if not os.path.exists(f"./models/{policy_file}"):
+			raise ValueError(f"Not exist model `./models/{policy_file}`!")
 		policy.load(f"./models/{policy_file}")
 
 	state, done = env.reset(), False
