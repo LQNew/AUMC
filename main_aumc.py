@@ -145,18 +145,22 @@ if __name__ == "__main__":
 					linear_prob = np.clip(linear_prob, 0.0, 1.0)
 					for i in range(qhead_nums): mask[i] = np.random.binomial(1, linear_prob[i], 1)
 				elif args.mode == "exp":
-					td_errors = np.clip(td_errors, 0.0, 705.0)  # in case for overflowing
+					td_error_max = np.max(td_errors) # trick for avoiding overflowing
+					td_errors -= td_error_max
+					# td_errors = np.clip(td_errors, 0.0, 705.0)  # in case for overflowing
 					td_errors = np.exp(td_errors)
 					td_errors_prob = td_errors / td_errors.sum()
 					exp_prob = args.beta + td_errors_prob
 					exp_prob = np.clip(exp_prob, 0.0, 1.0)
 					for i in range(qhead_nums): mask[i] = np.random.binomial(1, exp_prob[i], 1)
+				else:
+					raise ValueError(f"Don't support {args.mode}!")
 			else:
 				mask = np.random.binomial(1, 1.0, qhead_nums)
 		elif args.policy.endswith("bootstrapped"):
 			mask = np.random.binomial(1, args.beta, qhead_nums)
 		else:
-			raise ValueError(f"Don't support {args.policy}")
+			raise ValueError(f"Don't support {args.policy}!")
 
 		# Store data in replay buffer
 		_replay_buffer.add(state, action, next_state, reward, done_bool, mask)
