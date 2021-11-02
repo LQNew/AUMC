@@ -1,6 +1,6 @@
 ## Attentive Update of Multi-Critic for Deep Reinforcement Learning
 
-PyTorch implementation of Attentive Update of Multi-Critic (AUMC).
+PyTorch implementation of paper "Attentive Update of Multi-Critic (AUMC)" which is accepted as ICME-2021 oral paper.
 Method is tested on MuJoCo continuous control tasks in OpenAI Gym. Agents are trained using PyTorch 1.4 and Python 3.6.
 
 ## Instructions
