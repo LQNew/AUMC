@@ -10,7 +10,6 @@ Method is tested on MuJoCo continuous control tasks in OpenAI Gym. Agents are tr
 # pytorch       1.4.0  (pip)
 # tensorflow    1.14.0 (pip)
 # DMC Control Suite and MuJoCo
-# Attention: Need `mjkey.txt`!!
 cd dockerfiles
 docker build . -t aumcRL
 ```
